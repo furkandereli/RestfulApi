@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.EntityFrameworkCore;
 using RestfulApi.Context;
 using RestfulApi.Entities;
 
@@ -20,7 +22,7 @@ namespace RestfulApi.Services
             return student;
         }
 
-        public async Task DeleteStudentAsync(string id)
+        public async Task DeleteStudentAsync(int id)
         {
             var student = await _studentContext.Students.FindAsync(id);
             
@@ -36,7 +38,7 @@ namespace RestfulApi.Services
             return await _studentContext.Students.ToListAsync();
         }
 
-        public async Task<Student> GetStudentByIdAsync(string id)
+        public async Task<Student> GetStudentByIdAsync(int id)
         {
             return await _studentContext.Students.FindAsync(id);
         }
@@ -51,6 +53,17 @@ namespace RestfulApi.Services
             _studentContext.Entry(student).State = EntityState.Modified;
             await _studentContext.SaveChangesAsync();
             return student;
+        }
+
+        public async Task<bool> UpdateStudentPartialAsync(int id, JsonPatchDocument<Student> patchDocument)
+        {
+            var existStudent = await GetStudentByIdAsync(id);
+            if (existStudent == null)
+                return false;
+
+            patchDocument.ApplyTo(existStudent);
+
+            return true;
         }
     }
 }

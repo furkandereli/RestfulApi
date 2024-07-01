@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestfulApi.Entities;
@@ -6,7 +7,7 @@ using RestfulApi.Services;
 
 namespace RestfulApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class StudentsController : ControllerBase
     {
@@ -25,7 +26,7 @@ namespace RestfulApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetStudentById(string id)
+        public async Task<IActionResult> GetStudentById(int id)
         {
             var student = await _studentService.GetStudentByIdAsync(id);
 
@@ -35,7 +36,7 @@ namespace RestfulApi.Controllers
             return Ok(student);
         }
 
-        [HttpGet("GetStudentsStartingWithLetterNamed")]
+        [HttpGet]
         public async Task<IActionResult> GetStudentsStartingWithLetterNamed(string letter)
         {
             var student = await _studentService.GetStudentsStartingWithLetterNamed(letter);
@@ -54,10 +55,10 @@ namespace RestfulApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateStudent(string id, [FromBody] Student student)
+        public async Task<IActionResult> UpdateStudent(int id, [FromBody] Student student)
         {
             if (id != student.Id)
-                return BadRequest();
+                return BadRequest("Idler eşleşmiyor !");
 
             try
             {
@@ -74,8 +75,22 @@ namespace RestfulApi.Controllers
             return Ok("Öğrenci başarıyla güncellendi !");
         }
 
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchStudent(int id, [FromBody] JsonPatchDocument<Student> patchDocument)
+        {
+            if (patchDocument == null)
+                return BadRequest();
+
+            var result = await _studentService.UpdateStudentPartialAsync(id, patchDocument);
+
+            if(!result)
+                return NotFound();
+
+            return Ok("Öğrenci başarıyla güncellendi !");
+        }
+
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteStudent(string id)
+        public async Task<IActionResult> DeleteStudent(int id)
         {
             var student = await _studentService.GetStudentByIdAsync(id);
             if (student == null)
