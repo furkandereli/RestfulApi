@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using RestfulApi.Entities;
 
-namespace RestfulApi.Services
+namespace RestfulApi.Services.StudentServices
 {
     public interface IStudentService
     {

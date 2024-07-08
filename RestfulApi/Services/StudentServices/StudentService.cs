@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using RestfulApi.Context;
 using RestfulApi.Entities;
 
-namespace RestfulApi.Services
+namespace RestfulApi.Services.StudentServices
 {
     public class StudentService : IStudentService
     {
@@ -25,7 +25,7 @@ namespace RestfulApi.Services
         public async Task DeleteStudentAsync(int id)
         {
             var student = await _studentContext.Students.FindAsync(id);
-            
+
             if (student != null)
             {
                 _studentContext.Students.Remove(student);

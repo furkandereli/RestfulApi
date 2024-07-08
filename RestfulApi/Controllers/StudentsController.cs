@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.JsonPatch;
+﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using RestfulApi.CustomAttributes;
 using RestfulApi.Entities;
-using RestfulApi.Services;
+using RestfulApi.Services.StudentServices;
 
 namespace RestfulApi.Controllers
 {
@@ -50,7 +50,7 @@ namespace RestfulApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateStudent([FromBody] Student student)
         {
-            var createdStudent = await _studentService.CreateStudentAsync(student);
+            await _studentService.CreateStudentAsync(student);
             return Ok("Öğrenci başarıyla oluşturuldu !");
         }
 
