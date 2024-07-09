@@ -1,6 +1,6 @@
-﻿using RestfulApi.Entities;
+﻿using RestfulApi.EntityLayer.Entities;
 
-namespace RestfulApi.Services.FakeServices
+namespace RestfulApi.BusinessLayer.Abstract
 {
     public interface IFakeService
     {

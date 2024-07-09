@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.JsonPatch;
+﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.EntityFrameworkCore;
-using RestfulApi.Context;
-using RestfulApi.Entities;
+using RestfulApi.BusinessLayer.Abstract;
+using RestfulApi.DataAccessLayer.Context;
+using RestfulApi.EntityLayer.Entities;
 
-namespace RestfulApi.Services.StudentServices
+namespace RestfulApi.BusinessLayer.Concrete
 {
     public class StudentService : IStudentService
     {

@@ -2,20 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RestfulApi.Context;
+using RestfulApi.DataAccessLayer.Context;
 
 #nullable disable
 
-namespace RestfulApi.Migrations
+namespace RestfulApi.DataAccessLayer.Migrations
 {
     [DbContext(typeof(StudentContext))]
-    [Migration("20240708142831_first_mig")]
-    partial class first_mig
+    partial class StudentContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,7 +21,7 @@ namespace RestfulApi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("RestfulApi.Entities.Student", b =>
+            modelBuilder.Entity("RestfulApi.EntityLayer.Entities.Student", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

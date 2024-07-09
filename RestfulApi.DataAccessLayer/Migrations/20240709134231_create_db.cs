@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace RestfulApi.Migrations
+namespace RestfulApi.DataAccessLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class first_mig : Migration
+    public partial class create_db : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

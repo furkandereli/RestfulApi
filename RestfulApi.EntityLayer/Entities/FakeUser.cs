@@ -1,4 +1,4 @@
-﻿namespace RestfulApi.Entities
+﻿namespace RestfulApi.EntityLayer.Entities
 {
     public class FakeUser
     {

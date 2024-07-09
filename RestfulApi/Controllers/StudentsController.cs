@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using RestfulApi.BusinessLayer.Abstract;
 using RestfulApi.CustomAttributes;
-using RestfulApi.Entities;
-using RestfulApi.Services.StudentServices;
+using RestfulApi.EntityLayer.Entities;
 
 namespace RestfulApi.Controllers
 {

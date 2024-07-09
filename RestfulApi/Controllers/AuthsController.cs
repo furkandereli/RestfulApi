@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using RestfulApi.Entities;
-using RestfulApi.Services.FakeServices;
+﻿using Microsoft.AspNetCore.Mvc;
+using RestfulApi.BusinessLayer.Abstract;
+using RestfulApi.EntityLayer.Entities;
 
 namespace RestfulApi.Controllers
 {

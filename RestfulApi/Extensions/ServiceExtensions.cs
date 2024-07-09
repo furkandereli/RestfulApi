@@ -1,5 +1,5 @@
-﻿using RestfulApi.Services.FakeServices;
-using RestfulApi.Services.StudentServices;
+﻿using RestfulApi.BusinessLayer.Abstract;
+using RestfulApi.BusinessLayer.Concrete;
 
 namespace RestfulApi.Extensions
 {
