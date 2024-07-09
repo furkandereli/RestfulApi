@@ -31,6 +31,8 @@ app.UseMiddleware<LoggingMiddleware>();
 
 app.UseMiddleware<GlobalExceptionMiddleware>();
 
+app.UseMiddleware<FakeAuthMiddleware>();
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

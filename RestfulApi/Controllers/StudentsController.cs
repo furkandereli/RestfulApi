@@ -48,7 +48,8 @@ namespace RestfulApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateStudent([FromBody] Student student)
+        [FakeAuth]
+        public async Task<IActionResult> CreateStudent([FromHeader] string username, [FromHeader] string password, [FromBody] Student student)
         {
             await _studentService.CreateStudentAsync(student);
             return Ok("Öğrenci başarıyla oluşturuldu !");

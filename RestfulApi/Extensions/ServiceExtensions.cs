@@ -1,5 +1,4 @@
-﻿using RestfulApi.CustomAttributes;
-using RestfulApi.Services.FakeServices;
+﻿using RestfulApi.Services.FakeServices;
 using RestfulApi.Services.StudentServices;
 
 namespace RestfulApi.Extensions
