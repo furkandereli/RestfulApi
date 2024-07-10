@@ -11,7 +11,7 @@ using RestfulApi.DataAccessLayer.Context;
 namespace RestfulApi.DataAccessLayer.Migrations
 {
     [DbContext(typeof(StudentContext))]
-    [Migration("20240709134231_create_db")]
+    [Migration("20240710090958_create_db")]
     partial class create_db
     {
         /// <inheritdoc />
@@ -23,6 +23,33 @@ namespace RestfulApi.DataAccessLayer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("RestfulApi.EntityLayer.Entities.Language", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DifficultyLevel")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsPopular")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Languages");
+                });
 
             modelBuilder.Entity("RestfulApi.EntityLayer.Entities.Student", b =>
                 {

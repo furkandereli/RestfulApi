@@ -10,5 +10,6 @@ namespace RestfulApi.DataAccessLayer.Context
         }
 
         public DbSet<Student> Students { get; set; }
+        public DbSet<Language> Languages { get; set; }
     }
 }
